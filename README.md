@@ -24,3 +24,11 @@ git commit -m <your-message>
 git push -u origin master
 ```
 6. Once this is done, open a `pull-request` and the PR will be reviewed by one of the seniors and then merged with the repository
+
+## Updating your repo
+
+1. If your repository has the header `this repository is behind original repository by 3 commits`
+2. do this
+```
+git pull https://github.com/IEEE-VIT/techloop-ml-plus master
+```
