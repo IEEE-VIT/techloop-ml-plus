@@ -3,41 +3,47 @@
 Created on Sun Feb  4 11:08:26 2018
 
 @author: Srivatsan
-LogReg using numpy and matplotlib
+LogReg using numpy
 """
-import numpy as np
-import matplotlib as plt
-
+from numpy import *
+import matplotlib.pyplot as plt
 alpha=0.001
-l=m=c=0
-itern=1000
-features=[200, 3]
-weights=[3,1]
-pred=[200, 1]
+l=w=c=0
+itern=20000   
+def hyplin(x,w,c):
+    return (float(w*x+c))
+
+def sigmoid(var,w,c):
+    return float(1/(1+exp(-hyplin(var,w,c))))
     
-def ohypf(x):
-    retrn(m*x+c)
+def graddec(x, y, w, c,m, itern, alpha):
+    for j in range(itern):
+        for i in range(m):
+            w=w- (alpha*(2/m)*(sigmoid(x[i],w,c)-y[i])*x[i])
+            c=c- (alpha*(2/m)*(sigmoid(x[i],w,c)-y[i]))
+    return [w, c]
 
-def costfn():
-    for i in range(len(x)):
-        J+= (1/N)*(hypf(x(i))-y(i))**2
-
-def sigmoid(var):
-    return (1/(1+np.exp(-var)))
-
-def predict(features, weights):
-    z= np.dot(features, weights)
-    return sigmoid(z)
-def costfunctionfeatures, labels, weights():
+def predict(w, c): #predicts output for given input after classification
+    hours= float(input())
+    t= sigmoid(hours,w,c)
     
+    if t>=0.5:
+        print ("Pass")
+    else:
+        print ("Fail")
+    return t
 
-def initw()
-        
-
-def cfn(x):
-    for i in range(1,m+1):
-        l+=y(i)*log(h(x(i)))+(1-y(i))*log(1-h(x(i)))
-    
-points = genfromtxt("dn.csv", delimiter=",")
-x=points[:,1]
-[m, c]= graddec
+points = genfromtxt("exam.csv", delimiter=",")
+x= points[...,1]
+y= points[...,2]
+m=len(x)
+[w, c]= graddec(x, y,w,c,m, itern, alpha)
+t=predict(w,c)
+print(w,c, t) #Prints values of theta0, theta1 and preticted probability
+t=[t for i in range(m)]
+x1=arange(len(t))
+plt.plot(x1,t)
+plt.scatter(x, y, color = "m", marker = "o", s = 30)
+plt.xlabel("Number of hours of study")
+plt.ylabel("Probability of pass")
+plt.show()
