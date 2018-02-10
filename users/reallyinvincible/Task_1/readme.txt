@@ -1,6 +1,6 @@
 Titanic survivability Predictor
 
-Libraries Required:
+Libraries Used:
 matplotlib
 numpy
 

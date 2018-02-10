@@ -44,7 +44,7 @@ if  __name__ == '__main__':
     print('Acquiring data')
     age, status = data_acquire()
     print('Data Acquisition Complete ')
-    alpha = 0.0001
+    alpha = 0.00001
     #Uncomment to try your own values
     #alpha = float(input('\nEnter the learning rate\n'))
     iterations = 10000
