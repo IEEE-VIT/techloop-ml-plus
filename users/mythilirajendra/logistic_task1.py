@@ -12,12 +12,12 @@ a[i]= sigmoid(W*x[i]+B)
 def loss(a,y):
     error=0
     for i in range(len(x)):
-        temp= -(y[i]*(loga[i])+(1-y[i])*log(1-a[i]))
+        temp= -(y[i]*log(a[i])+(1-y[i])*log(1-a[i]))
         error+=temp
     return error/float(len(x))
 
 
-def gradient(x,y,iterations,alpha,val):
+def gradient(x,y,iterations,alpha):
     W=0
     B=0
     for i in range(iterations):
@@ -32,10 +32,10 @@ def gradient(x,y,iterations,alpha,val):
 
 alpha= 0.001
 iterations= 10000
-W2,B2= gradient(x,y,10000,0.001,val)
+W2,B2= gradient(x,y,10000,0.001)
 
 def probability(val):
-    a= sigmoid(W2*val+B2)
+    return sigmoid(W2*val+B2)
     
 value=int(input('Enter the value:'))
 print( " the probability is" + probability(value))
